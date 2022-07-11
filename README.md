@@ -25,10 +25,11 @@ Video walkthrough for this application being testing using insomnia can be acces
 <a name="usage"></a>
 ## Usage
 
-![Screenshot](./)
-![Screenshot](./)
-![Screenshot](./)
-![Screenshot](./)
+![Screenshot](./assets/screenshots/Screen%20Shot%202022-07-11%20at%206.05.43%20PM.png)
+![Screenshot](./assets/screenshots/Screen%20Shot%202022-07-11%20at%206.06.07%20PM.png)
+![Screenshot](./assets/screenshots/Screen%20Shot%202022-07-11%20at%206.06.31%20PM.png)
+![Screenshot](./assets/screenshots/Screen%20Shot%202022-07-11%20at%206.14.38%20PM.png)
+![Screenshot](./assets/screenshots/Screen%20Shot%202022-07-11%20at%206.15.06%20PM.png)
     
 <a name="license"></a>
 ## License
