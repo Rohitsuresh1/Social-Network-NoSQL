@@ -75,6 +75,33 @@ const userController = {
         });
     },
 
+    addFriend({params},res){
+        User.findOneAndUpdate({_id:params.userId},{$push:{friends:params.friendId}},{new:true, runValidators:true})
+        .then((dbData) => {
+            if(!dbData){
+                return res.status(404).json({message:'No user found with this id!'});
+            }
+            res.json(dbData);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(400).json(err);
+        });
+    },
+
+    deleteFriend({params},res) {
+        User.findOneAndUpdate({_id:params.userId},{$pull:{friends:params.friendId}})
+        .then((dbData)=>{
+            if(!dbData){
+                return res.status(404).json({message:'No user found with this id!'});
+            }
+            res.json({message:'Followind data has been deleted', dbData})
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(400).json(err);
+        });
+    },
 };
 
 module.exports = userController;
