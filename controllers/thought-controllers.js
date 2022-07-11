@@ -2,15 +2,19 @@ const { Thought, User } = require('../models');
 
 const thoughtController = {
     createThought({body},res) {
-        Thought.create(body)
+        Thought.create((body))
         .then(({_id}) => {
-            return User.findByIdAndUpdate(
-                { _id: body.userId},
+            console.log(body);
+            return User.findOneAndUpdate(
+                {_id: body.userId},
                 {$push: {thoughts: _id}},
                 {new: true}
             );
         })
-        .then((dbData) => {
+        .then(dbData => {
+            if(!dbData){
+                return res.status(404).json({message:'No user found with this id!'});
+            }
             res.json(dbData);
         })
         .catch(err => {
@@ -79,7 +83,7 @@ const thoughtController = {
     },
 
     addReaction({params,body},res){
-        Thought.findOneAndUpdate({_id:params.thoughtId},{$push:{reactions:body}},{new:true,runValidators:true})
+        Thought.findOneAndUpdate({_id:params.thoughtId},{$addToSet:{reactions:body}},{new:true,runValidators:true})
         .then((dbData) => {
             if(!dbData) {
                 res.status(404).json({ message: 'No thought found with this id!'});
