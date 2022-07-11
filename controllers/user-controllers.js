@@ -3,7 +3,7 @@ const { User, Thought } = require('../models');
 const userController = {
     
     createUser({body},res) {
-        User.create(body)
+        User.create((body))
         .then((dbData)=> res.json(dbData))
         .catch(err => {
             console.log(err);
@@ -43,11 +43,12 @@ const userController = {
     },
 
     updateUser({params,body},res) {
-        User.findOneAndUpdate({_id:params.id}, body, {new:true, runValidators:true})
+        User.findByIdAndUpdate({_id:params.id}, body, {new:true, runValidators:true})
         .then((dbData) => {
             if(!dbData){
                 return res.status(404).json({message:'No user found with this id!'});
             }
+            console.log(body);
             res.json(dbData);
         })
         .catch(err => {

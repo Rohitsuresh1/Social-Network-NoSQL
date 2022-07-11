@@ -16,6 +16,14 @@ const userSchema = new Schema(
             match: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
         },
         
+        friends: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: "User",
+                unique: false,
+            },
+        ],
+        
         thoughts: [
             {
                 type: Schema.Types.ObjectId,
@@ -23,14 +31,6 @@ const userSchema = new Schema(
             },
         ],
         
-        friends: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: "User",
-                unique: true,
-            },
-        ],
-
     },
 
     {
@@ -52,7 +52,6 @@ userSchema.virtual('thoughtCount').get(function () {
     return this.thoughts.length;
 });
 
-userSchema.plugin(arrayUniquePlugin);
 
 const User = model('User', userSchema);
 
