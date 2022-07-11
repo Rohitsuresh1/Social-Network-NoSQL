@@ -1,3 +1,4 @@
+const arrayUniquePlugin = require('mongoose-unique-array');
 const { Schema, model } = require('mongoose');
 
 const userSchema = new Schema(
@@ -26,6 +27,7 @@ const userSchema = new Schema(
             {
                 type: Schema.Types.ObjectId,
                 ref: "User",
+                unique: true,
             },
         ],
 
@@ -49,6 +51,8 @@ userSchema.virtual('friendCount').get(function () {
 userSchema.virtual('thoughtCount').get(function () {
     return this.thoughts.length;
 });
+
+userSchema.plugin(arrayUniquePlugin);
 
 const User = model('User', userSchema);
 

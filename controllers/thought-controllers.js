@@ -78,7 +78,7 @@ const thoughtController = {
         });
     },
 
-    createReaction({params,body},res){
+    addReaction({params,body},res){
         Thought.findOneAndUpdate({_id:params.thoughtId},{$push:{reactions:body}},{new:true,runValidators:true})
         .then((dbData) => {
             if(!dbData) {
