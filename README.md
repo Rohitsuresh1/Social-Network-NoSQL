@@ -21,8 +21,8 @@ The project can be cloned from this directory using `git clone` and the applicat
 
 ## Video Walkthrough
 Video walkthrough for this application being testing using insomnia can be accessed at: 
-[Main Video Link](https://1drv.ms/v/s!AsYlxac97Fv_kUVdlnW3-5KBwhUY?e=PWPVJ9)
-[Bonus Marks Video Link](https://1drv.ms/v/s!AsYlxac97Fv_kUTd-7hexozbsmNe?e=kt7y3V)
+- [Main Video Link](https://1drv.ms/v/s!AsYlxac97Fv_kUVdlnW3-5KBwhUY?e=PWPVJ9)
+- [Bonus Marks Video Link](https://1drv.ms/v/s!AsYlxac97Fv_kUTd-7hexozbsmNe?e=kt7y3V)
 
 
 <a name="usage"></a>
