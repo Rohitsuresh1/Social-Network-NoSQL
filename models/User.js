@@ -15,6 +15,13 @@ const userSchema = new Schema(
             match: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
         },
         
+        thoughts: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: "Thought",
+            },
+        ],
+        
         friends: [
             {
                 type: Schema.Types.ObjectId,
@@ -22,19 +29,15 @@ const userSchema = new Schema(
             },
         ],
 
-        thoughts: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: "Thought",
-            },
-        ],
     },
+    
     {
         toJSON: {
             virtuals: true,
             getters: true,
         },
         id: false,
+
     }
     
 );
