@@ -70,7 +70,7 @@ const thoughtController = {
                 res.status(404).json({ message: 'No thought found with this id!'});
                 return;
             }
-            res.json({message:'Following record has been deleted',dbData});
+            res.json({message:'Following record has been deleted!',dbData});
         })
         .catch(err => {
             console.log(err);
@@ -78,6 +78,35 @@ const thoughtController = {
         });
     },
 
+    createReaction({params,body},res){
+        Thought.findOneAndUpdate({_id:params.thoughtId},{$push:{reactions:body}},{new:true,runValidators:true})
+        .then((dbData) => {
+            if(!dbData) {
+                res.status(404).json({ message: 'No thought found with this id!'});
+                return;
+            }
+            res.json({message:'Following record has been updated!',dbData});
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(400).json(err);
+        });
+    },
+
+    deleteReaction({params},res){
+        Thought.findOneAndUpdate({_id:params.thoughtId},{$pull:{reactions:{_id:params.reactionId}}},{new:true})
+        .then((dbData) => {
+            if(!dbData) {
+                res.status(404).json({ message: 'No thought found with this id!'});
+                return;
+            }
+            res.json({message:'Following record has been updated!',dbData});
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(400).json(err);
+        });
+    }
 
 };
 
